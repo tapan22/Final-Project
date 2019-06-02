@@ -1,49 +1,83 @@
-﻿<%@ Page Title="Log In" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Login.aspx.cs" Inherits="StudentRetrieval.Account.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="StudentRetrieval.Login" %>
 
-<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-</asp:Content>
-<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>
-        Log In
-    </h2>
-    <p>
-        Please enter your username and password.
-        <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false">Register</asp:HyperLink> if you don't have an account.
-    </p>
-    <asp:Login ID="LoginUser" runat="server" EnableViewState="false" RenderOuterTable="false">
-        <LayoutTemplate>
-            <span class="failureNotification">
-                <asp:Literal ID="FailureText" runat="server"></asp:Literal>
-            </span>
-            <asp:ValidationSummary ID="LoginUserValidationSummary" runat="server" CssClass="failureNotification" 
-                 ValidationGroup="LoginUserValidationGroup"/>
-            <div class="accountInfo">
-                <fieldset class="login">
-                    <legend>Account Information</legend>
-                    <p>
-                        <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Username:</asp:Label>
-                        <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" 
-                             CssClass="failureNotification" ErrorMessage="User Name is required." ToolTip="User Name is required." 
-                             ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator>
-                    </p>
-                    <p>
-                        <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
-                        <asp:TextBox ID="Password" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" 
-                             CssClass="failureNotification" ErrorMessage="Password is required." ToolTip="Password is required." 
-                             ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator>
-                    </p>
-                    <p>
-                        <asp:CheckBox ID="RememberMe" runat="server"/>
-                        <asp:Label ID="RememberMeLabel" runat="server" AssociatedControlID="RememberMe" CssClass="inline">Keep me logged in</asp:Label>
-                    </p>
-                </fieldset>
-                <p class="submitButton">
-                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" ValidationGroup="LoginUserValidationGroup"/>
-                </p>
-            </div>
-        </LayoutTemplate>
-    </asp:Login>
-</asp:Content>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="css/pro.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+        
+                
+        .style1
+    {
+        text-align: center;
+        font-size: xx-large;
+    }
+        
+                
+        .style2
+    {
+        height: 69px;
+        background-color:white;
+    }
+        
+    .pass
+    {
+        width: 100%;
+        padding: 6px 10px;
+        margin: 4px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }   
+        </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <p class="style1"><strong>Question Paper Retrieval System</strong></p>
+    <center>
+    <table id="project" style="background-color:White; margin-top:110px; height: 192px;">
+    <tr><th colspan="2" align="center">Login</th></tr>
+  <tr>
+    <td>Email</td>
+    <td>
+        <asp:TextBox ID="uname" runat="server"></asp:TextBox></td>
+    <td style="visibility:collapse">
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+            ControlToValidate="uname" ErrorMessage="*Required"></asp:RequiredFieldValidator>
+      </td>
+  </tr>
+  <tr>
+    <td>Password </td>
+    <td>
+        <asp:TextBox ID="pass" runat="server" TextMode="Password" Width="100%" 
+            CssClass="pass"></asp:TextBox> </td>
+    <td style="visibility:collapse">
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+            ControlToValidate="pass" ErrorMessage="*Required"></asp:RequiredFieldValidator>
+      </td>
+  </tr>
+ 
+  <tr>
+    
+    <td colspan="2" align="center" class="style2">
+        <asp:Button ID="btn_login" runat="server" onclick="btn_login_Click" 
+            Text="Login" />
+        <br />
+        <br />
+        New User? 
+        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" 
+            onclick="LinkButton1_Click">Click Here</asp:LinkButton>
+        
+      </td>
+    <td class="style2" align="left" style="visibility:collapse"></td>
+  </tr>
+  
+</table>
+    </center>
+    </form>
+</body>
+</html>
